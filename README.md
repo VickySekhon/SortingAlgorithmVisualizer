@@ -16,7 +16,7 @@ The goal of this project is to provide a hands-on experience for users to visual
 
 ## How to Install and Run the Project
 
-1. Clone the repository to your local machine - git clone https://github.com/VickySekhon/SortingAlgorithmVisualizer.git
+1. Clone the repository to your local machine
 2. Navigate to the project directory - cd SortingAlgorithmVisualizer
 3. Install the required dependencies - pip install tkinter
 4. Run the main script - python main.py
