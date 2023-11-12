@@ -5,12 +5,12 @@ This project is a Sorting Algorithm Visualizer built using Python and the Tkinte
 
 The implemented sorting algorithms include:
 
-Shell Sort
-Merge Sort
-Selection Sort
-Insertion Sort
-Quick Sort
-Bubble Sort
+- Shell Sort
+- Merge Sort
+- Selection Sort
+- Insertion Sort
+- Quick Sort
+- Bubble Sort
 
 The goal of this project is to provide a hands-on experience for users to visualize the sorting process and gain insights into the efficiency and mechanics of different sorting algorithms.
 
@@ -18,19 +18,19 @@ The goal of this project is to provide a hands-on experience for users to visual
 
 Clone the repository to your local machine:
 
-git clone https://github.com/VickySekhon/SortingAlgorithmVisualizer.git
+### git clone https://github.com/VickySekhon/SortingAlgorithmVisualizer.git
 
 Navigate to the project directory:
 
-cd SortingAlgorithmVisualizer
+### cd SortingAlgorithmVisualizer
 
 Install the required dependencies:
 
-pip install tkinter
+### pip install tkinter
 
 Run the main script:
 
-python main.py
+### python main.py
 
 ## How to Use the Project
 
@@ -44,7 +44,7 @@ Click the "Visualize" button to see the sorting algorithm in action.
 
 Observe the visual representation of the sorting process.
 
-Credits
+## Credits
 Project created by Vicky Sekhon
 Sorting algorithm implementations inspired by https://github.com/ForeignGods/Sorting-Algorithms-Blender
 License
