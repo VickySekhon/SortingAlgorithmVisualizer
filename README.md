@@ -20,34 +20,23 @@ Clone the repository to your local machine:
 
 ### git clone https://github.com/VickySekhon/SortingAlgorithmVisualizer.git
 
-Navigate to the project directory:
-
-### cd SortingAlgorithmVisualizer
-
-Install the required dependencies:
-
-### pip install tkinter
-
-Run the main script:
-
-### python main.py
+1. Navigate to the project directory - cd SortingAlgorithmVisualizer
+2. Install the required dependencies - pip install tkinter
+3. Run the main script - python main.py
 
 ## How to Use the Project
 
-Upon running the application, a graphical interface will appear.
-
-Choose a sorting algorithm from the available options.
-
-Set the desired speed of visualization.
+Upon running the application, a graphical interface will appear. Choose a sorting algorithm from the available options and set the desired speed of visualization.
 
 Click the "Visualize" button to see the sorting algorithm in action.
 
 Observe the visual representation of the sorting process.
 
 ## Credits
-Project created by Vicky Sekhon
-Sorting algorithm implementations inspired by https://github.com/ForeignGods/Sorting-Algorithms-Blender
-License
+- Project created by Vicky Sekhon
+- Sorting algorithm implementations inspired by https://github.com/ForeignGods/Sorting-Algorithms-Blender
+
+## License
 This project is licensed under the MIT License.
 
 Feel free to contribute and improve upon this project by adding sound effects when sorting and more sorting algorithms. Happy coding!
