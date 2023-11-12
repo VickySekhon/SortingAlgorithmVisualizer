@@ -1,5 +1,7 @@
 # SortingAlgorithmVisualizer
 
+https://github.com/VickySekhon/SortingAlgorithmVisualizer/assets/114193273/19ea8b25-a904-4abf-9e7a-464fe64773fb
+
 ## Project Description
 This project is a Sorting Algorithm Visualizer built using Python and the Tkinter library. It provides a graphical representation of various sorting algorithms, allowing users to observe and understand how each algorithm works.
 
