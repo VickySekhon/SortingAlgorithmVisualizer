@@ -2,65 +2,84 @@ import random
 from tkinter import *
 from tkinter import ttk
 
-# import all sorting algorithms
+# import sorting algorithms
 from algorithms.bubbleSort import bubble_sort
 from algorithms.insertionSort import insertion_sort
 from algorithms.mergeSort import merge_sort
 from algorithms.quickSort import quick_sort
 from algorithms.selectionSort import selection_sort
 from algorithms.shellSort import shell_sort
+
+# import colors to use throughout the project
 from colors import *
 
 window = Tk()
 
-# window title
 window.title("Sorting Algorithm Visualizer By: Vicky Sekhon")
 
-# maximum size of window
+CANVAS_WIDTH = 1900
+
+CANVAS_HEIGHT = 700
+
+OFFSET = 4
+
+SPACING = 2
+
 window.maxsize(1920, 1130)
 
-# background color
-window.config(background=BLACK)
+window.config(background=BLACK) # set background color 
 
-# colors used for data elements
 COLORS = [RED, BLUE, LIGHT_GREEN, YELLOW, DARK_BLUE, WHITE, PINK, PURPLE]
 
-# algorithms available
 algorithm_name = StringVar()
-algorithm_list = [
+# define algorithms
+algorithm_list = [ 
     "Bubble Sort",
     "Insertion Sort",
     "Merge Sort",
     "Quick Sort",
     "Selection Sort",
     "Shell Sort",
-]
+] 
 
-# list of speeds to sort data at
 speed_name = StringVar()
-speed_list = ["Fast", "Medium", "Slow"]
+speed_list = ["Fast", "Medium", "Slow"] # define sorting speeds
 
-# array to store data within
-data = []
+data = [] # array to store data 
 
+def draw_single_data_element(element, height, x_width, colorArray):
+    
+    # starting x coordinate 
+    x0 = element * x_width + OFFSET + SPACING
+    
+    # starting y coordinate
+    y0 = CANVAS_HEIGHT - height * 890
+    
+    # ending x coordinate 
+    x1 = (element + 1) * x_width + OFFSET
+    
+    # ending y coordinate 
+    y1 = CANVAS_HEIGHT
+    
+    # draw rectangle using starting and ending x,y coordinates 
+    canvas.create_rectangle(x0, y0, x1, y1, fill=colorArray[element])
+    
 
 # display array
 def draw_array(data, colorArray):
+    
+    # clear canvas
     canvas.delete("all")
-    canvas_width = 1900
-    canvas_height = 1000
-    x_width = canvas_width / (len(data) + 1)
-    offset = 4
-    spacing = 2
-    normalizedData = [i / max(data) for i in data]
+    
+    # width to ensure data elements are included on the canvas
+    x_width = CANVAS_WIDTH / (len(data) + 1)
+    
+    # create sizing relative to the largest data element 
+    relativelySizedData = [i / max(data) for i in data]
 
-    for i, height in enumerate(normalizedData):
-        x0 = i * x_width + offset + spacing
-        y0 = canvas_height - height * 890
-        x1 = (i + 1) * x_width + offset
-        y1 = canvas_height
-        canvas.create_rectangle(x0, y0, x1, y1, fill=colorArray[i])
-
+    for i, height in enumerate(relativelySizedData):
+        draw_single_data_element(i, height, x_width, colorArray)
+        
     window.update_idletasks()
 
 
@@ -68,9 +87,26 @@ def draw_array(data, colorArray):
 def generate():
     global data
     data = []
-    for i in range(0, 100):
-        data.append(random.randint(100, 500))
+    
+    # get no. of data elements to generate 
+    number_of_elements = data_elements.get()
+    
+    # get max magnitude of data elements to generate
+    magnitude = max_magnitude.get()
+    
+    # check if no. of data elements entered is valid
+    if number_of_elements.isalpha() or magnitude.isalpha():
+        print("Invalid input")
+        return
+    else:
+        number_of_elements = int(number_of_elements)
+        magnitude = int(magnitude)
+        
+    # add data elements to array to sort
+    for i in range(0, number_of_elements):
+        data.append(random.randint(0, magnitude))
 
+    # draw the array onto the screen
     draw_array(data, [COLORS[random.randint(0, 7)] for x in range(len(data))])
 
 
@@ -82,7 +118,6 @@ def sort_speed():
         return 0.1
     else:
         return 0.001
-
 
 # sort using desired algorithm
 def sort():
@@ -138,16 +173,28 @@ speed_menu = ttk.Combobox(UI_frame, textvariable=speed_name, values=speed_list)
 speed_menu.grid(row=2, column=1, padx=5, pady=5)
 speed_menu.current(0)
 
+# no. of data elements input box
+l3 = Label(UI_frame, text="Data Elements: ", background=BLACK, foreground=WHITE)
+l3.grid(row=3, column=0, padx=10, pady=5, sticky=W)
+data_elements = ttk.Entry(UI_frame)
+data_elements.grid(row=3, column=1, padx=5, pady=5)
+
+# max magnitude of data elements input box
+l4 = Label(UI_frame, text="Max Magnitude: ", background=BLACK, foreground=WHITE)
+l4.grid(row=4, column=0, padx=10, pady=5, sticky=W)
+max_magnitude = ttk.Entry(UI_frame)
+max_magnitude.grid(row=4, column=1, padx=5, pady=5)
+
 # sorting button
 b1 = Button(UI_frame, text="Sort", command=sort, background=WHITE)
-b1.grid(row=3, column=1, padx=5, pady=5)
+b1.grid(row=5, column=1, padx=5, pady=5)
 
 # array generator button
 b3 = Button(UI_frame, text="Generate Array", command=generate, background=WHITE)
-b3.grid(row=3, column=0, padx=5, pady=5)
+b3.grid(row=5, column=0, padx=5, pady=5)
 
 # canvas
 canvas = Canvas(window, width=2000, height=1000, background=BLACK, highlightthickness=0)
-canvas.grid(row=4, column=0, columnspan=3, padx=10, pady=5)
+canvas.grid(row=6, column=0, columnspan=3, padx=10, pady=5)
 
 window.mainloop()
