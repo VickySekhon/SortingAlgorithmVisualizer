@@ -1,4 +1,5 @@
 import random
+import time 
 from tkinter import *
 from tkinter import ttk
 
@@ -31,6 +32,9 @@ window.config(background=BLACK) # set background color
 
 COLORS = [RED, BLUE, LIGHT_GREEN, YELLOW, DARK_BLUE, WHITE, PINK, PURPLE]
 
+START_TIME = None
+END_TIME = None
+
 algorithm_name = StringVar()
 # define algorithms
 algorithm_list = [ 
@@ -46,6 +50,15 @@ speed_name = StringVar()
 speed_list = ["Fast", "Medium", "Slow"] # define sorting speeds
 
 data = [] # array to store data 
+
+def update_elapsed_time():
+    elapsed_time = 0
+    if (START_TIME != None and END_TIME != None):
+        elapsed_time = END_TIME - START_TIME
+        elapsed_time_string = time.strftime("%S", time.gmtime(elapsed_time))
+        sorting_time.config(text=elapsed_time_string + " seconds")
+    else:
+        sorting_time.config(text="")
 
 def draw_single_data_element(element, height, x_width, colorArray):
     
@@ -104,7 +117,7 @@ def generate():
         
     # add data elements to array to sort
     for i in range(0, number_of_elements):
-        data.append(random.randint(0, magnitude))
+        data.append(random.randint(25, magnitude))
 
     # draw the array onto the screen
     draw_array(data, [COLORS[random.randint(0, 7)] for x in range(len(data))])
@@ -121,9 +134,9 @@ def sort_speed():
 
 # sort using desired algorithm
 def sort():
-    global data
+    global data, START_TIME, END_TIME
     timeTick = sort_speed()
-
+    START_TIME = time.time()
     if algorithm_menu.get() == "Bubble Sort":
         bubble_sort(data, draw_array, timeTick)
     elif algorithm_menu.get() == "Merge Sort":
@@ -136,6 +149,8 @@ def sort():
         selection_sort(data, draw_array, timeTick)
     elif algorithm_menu.get() == "Quick Sort":
         quick_sort(data, 0, len(data) - 1, draw_array, timeTick)
+    END_TIME = time.time()
+    update_elapsed_time()
 
 
 # user interactable elements
@@ -192,6 +207,12 @@ b1.grid(row=5, column=1, padx=5, pady=5)
 # array generator button
 b3 = Button(UI_frame, text="Generate Array", command=generate, background=WHITE)
 b3.grid(row=5, column=0, padx=5, pady=5)
+
+# sorting time text
+l5 = Label(UI_frame, text="Elapsed Time:", background=BLACK, foreground=WHITE, font=100)
+l5.grid(row=5, column=3, padx=10, pady=5, sticky=W)
+sorting_time = ttk.Label(UI_frame, text="", background=BLACK, foreground=WHITE, font=100)
+sorting_time.grid(row=5, column=4, padx=10, pady=5, sticky=W)
 
 # canvas
 canvas = Canvas(window, width=2000, height=1000, background=BLACK, highlightthickness=0)
