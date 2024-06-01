@@ -1,6 +1,6 @@
 # SortingAlgorithmVisualizer
 
-https://github.com/VickySekhon/SortingAlgorithmVisualizer/assets/114193273/3f76b23d-5e35-42e6-9ec3-a809ef687b0d
+https://github.com/VickySekhon/SortingAlgorithmVisualizer/assets/114193273/b03dbfe0-c3fc-4599-8f67-e1db6f6194c4
 
 ## Project Description
 This project is a Sorting Algorithm Visualizer built using Python and the Tkinter library. It provides a graphical representation of various sorting algorithms, allowing users to observe and understand how each algorithm works.
@@ -14,7 +14,7 @@ The implemented sorting algorithms include:
 - ```Quick Sort```
 - ```Bubble Sort```
 
-The goal of this project is to provide a hands-on experience for users to visualize the sorting process and gain insights into the efficiency and mechanics of different sorting algorithms.
+This project intends to provide an educational experience for students learning algorithms to visualize the sorting process and gain insights into the efficiency and mechanics of different sorting algorithms.
 
 ## How to Install and Run the Project
 
