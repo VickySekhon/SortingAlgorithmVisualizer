@@ -1,6 +1,5 @@
 # SortingAlgorithmVisualizer
 
-
 https://github.com/VickySekhon/SortingAlgorithmVisualizer/assets/114193273/b03dbfe0-c3fc-4599-8f67-e1db6f6194c4
 
 ## Project Description
