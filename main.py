@@ -3,6 +3,7 @@ import time
 from tkinter import *
 from tkinter import ttk
 
+
 # import sorting algorithms
 from algorithms.bubbleSort import bubble_sort
 from algorithms.insertionSort import insertion_sort
