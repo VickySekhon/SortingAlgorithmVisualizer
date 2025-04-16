@@ -16,7 +16,6 @@ The implemented sorting algorithms include:
 
 This project intends to provide an educational experience for students learning algorithms to visualize the sorting process and gain insights into the efficiency and mechanics of different sorting algorithms.
 
-
 ## How to Install and Run the Project
 
 1. Clone the repository to your local machine
